@@ -45,7 +45,7 @@ Berikut arsitektur empat lapis yang diterapkan:
 * Digunakan untuk proses **data mining**, **reporting**, dan **analytics** melalui alat BI seperti Power BI atau Tableau
 
 ## C. Skema Gudang Data (Star Schema)
-
+![Diagram Gudang Data](https://github.com/sains-data/DataWarehouse/blob/main/fix.drawio.png)
 ### Tabel Dimensi
 
 | Tabel Dimensi | Atribut               | Deskripsi                            |
