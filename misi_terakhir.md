@@ -81,6 +81,7 @@ A. **Tujuan Bisnis**
    5. Memonitor pendapatan harian, mingguan, bulanan, dll.
 
 B. **Desain Konseptual Awal**  
+   ![Diagram Gudang Data](https://github.com/sains-data/DataWarehouse/blob/main/fix.drawio.png)
    a. **Fakta**  
    - Pembelian (Purchase Fact)  
    b. **Dimensi**  
