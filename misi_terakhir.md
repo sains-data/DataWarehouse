@@ -111,7 +111,96 @@ c. **Cek Ketersediaan Data dan Spesifikasi Mapping**
 Logical schema merujuk pada struktur tabel yang dirancang untuk mengorganisir dan mengelola data di dalam Data Warehouse. Maka dari itu yang digunakan sebagai tabel fakta yaitu (Transaksi Penjualan), dan yang bertindak sebagai tabel dimensi yaitu: Dimensi Tanggal, Dimensi Pelanggan, Dimensi Pembayaran, dan Dimensi Item.
 
 ### 3.2.3 Desain Fiskal
+##### Pembuatan Struktur Tabel
 
+```sql
+-- TABEL DIMENSI
+
+CREATE TABLE Dim_Customer (
+    Customer_ID INT PRIMARY KEY,
+    Customer_Name VARCHAR(100),
+    Customer_Address VARCHAR(200),
+    Customer_Email VARCHAR(100)
+);
+
+CREATE TABLE Dim_Product (
+    Product_ID INT PRIMARY KEY,
+    Product_Name VARCHAR(100),
+    Product_Category VARCHAR(100)
+);
+
+CREATE TABLE Dim_Date (
+    Date_ID INT PRIMARY KEY,
+    Date DATE,
+    Day INT,
+    Month INT,
+    Year INT
+);
+
+CREATE TABLE Dim_Payment_Method (
+    Payment_Method_ID INT PRIMARY KEY,
+    Payment_Method VARCHAR(50)
+);
+
+-- TABEL FAKTA
+
+CREATE TABLE Fact_Purchase (
+    Transaction_ID INT PRIMARY KEY,
+    Customer_ID INT,
+    Product_ID INT,
+    Date_ID INT,
+    Payment_Method_ID INT,
+    Purchase_Amount FLOAT,
+    Review_Rating FLOAT,
+    FOREIGN KEY (Customer_ID) REFERENCES Dim_Customer(Customer_ID),
+    FOREIGN KEY (Product_ID) REFERENCES Dim_Product(Product_ID),
+    FOREIGN KEY (Date_ID) REFERENCES Dim_Date(Date_ID),
+    FOREIGN KEY (Payment_Method_ID) REFERENCES Dim_Payment_Method(Payment_Method_ID)
+);
+
+```
+- Total Penjualan Perproduk
+```sql
+SELECT P.Product_Name, SUM(F.Purchase_Amount) AS Total_Sales
+FROM Fact_Purchase F
+JOIN Dim_Product P ON F.Product_ID = P.Product_ID
+GROUP BY P.Product_Name
+ORDER BY Total_Sales DESC;
+```
+- Rata-rata Rating Produk
+```sql
+SELECT P.Product_Name, AVG(F.Review_Rating) AS Average_Rating
+FROM Fact_Purchase F
+JOIN Dim_Product P ON F.Product_ID = P.Product_ID
+WHERE F.Review_Rating IS NOT NULL
+GROUP BY P.Product_Name
+ORDER BY Average_Rating DESC;
+```
+- Total Penjualan Per Metode Pembayaran
+```sql
+SELECT M.Payment_Method, SUM(F.Purchase_Amount) AS Total_Sales
+FROM Fact_Purchase F
+JOIN Dim_Payment_Method M ON F.Payment_Method_ID = M.Payment_Method_ID
+GROUP BY M.Payment_Method
+ORDER BY Total_Sales DESC;
+```
+- Total Penjualan Bulanan
+```sql
+SELECT D.Month, D.Year, SUM(F.Purchase_Amount) AS Monthly_Sales
+FROM Fact_Purchase F
+JOIN Dim_Date D ON F.Date_ID = D.Date_ID
+GROUP BY D.Year, D.Month
+ORDER BY D.Year, D.Month;
+```
+- Penjualan Terbanyak per Pelanggan
+```sql
+SELECT C.Customer_Name, SUM(F.Purchase_Amount) AS Total_Spent
+FROM Fact_Purchase F
+JOIN Dim_Customer C ON F.Customer_ID = C.Customer_ID
+GROUP BY C.Customer_Name
+ORDER BY Total_Spent DESC
+LIMIT 10;
+```
 # BAB IV IMPLEMENTASI DAN EVALUASI SISTEM
 
 ## 4.1 Proses Implementasi  
@@ -121,5 +210,16 @@ Logical schema merujuk pada struktur tabel yang dirancang untuk mengorganisir da
 # BAB V PENUTUP
 
 ## 5.1 Kesimpulan  
-## 5.2 Rencana Pengembangan  
+## 5.2 Rencana Pengembangan
+Ke depan, sistem data warehouse ini dapat dikembangkan dengan menambahkan fitur-fitur berikut:
+1. Integrasi dengan Data Real-time: Menambahkan kemampuan untuk memproses data secara real-time sehingga laporan dapat diperbarui secara otomatis.
+2. Peningkatan Visualisasi: Memperluas jenis visualisasi yang disediakan, seperti analisis prediktif menggunakan machine learning untuk meramalkan tren penjualan di masa depan.
+3. Penyempurnaan Proses ETL: Menambahkan lebih banyak aturan pemrosesan untuk mengatasi data yang tidak lengkap atau tidak konsisten.
+  
 ## 5.3 Profil Tim Proyek
+Sofyan Fauzi Dzaki Arif			                122450116
+Sylviani Primaastuti Ananda              	  121450042
+Rahma Neliyana 			                        122450036
+Renta Siahaan					                      122450070
+Diana Syafithri 					                  122450141
+
