@@ -207,13 +207,34 @@ LIMIT 10;
 ```
 # BAB IV IMPLEMENTASI DAN EVALUASI SISTEM
 
-## 4.1 Proses Implementasi  
+## 4.1 Proses Implementasi
+Pada tahap ini, implementasi sistem dimulai dengan pembuatan basis data yang mengintegrasikan data penjualan fashion dalam satu sistem. Proses ini mencakup penerapan skema bintang pada database PostgreSQL, yang telah dirancang pada tahap sebelumnya.
+Langkah-langkah implementasi yang dilakukan adalah sebagai berikut:
+1. Pembuatan Tabel dan Struktur Database:
+   -Tabel fakta dan tabel dimensi diciptakan berdasarkan desain fiskal yang telah dibahas sebelumnya.
+   -Tabel dimensi yang digunakan antara lain: Dim_Customer, Dim_Product, Dim_Date, dan Dim_Payment_Method.
+   -Tabel fakta Fact_Purchase digunakan untuk menyimpan informasi tentang transaksi pembelian, yang mengandung atribut seperti ID transaksi, jumlah pembelian, dan metode pembayaran.
+   -Setiap tabel dilengkapi dengan kolom-kolom yang sesuai dengan data yang ada pada dataset, seperti Customer_ID, Item_Name, dan Purchase_Amount.
+   -Penggunaan primary key dan foreign key memastikan integritas data dan hubungan antar tabel.
+2. Proses ETL (Extract, Transform, Load):
+   -Extract: Data diekstrak dari file CSV yang berisi informasi penjualan produk fashion yang diambil dari platform Kaggle.
+   -Transform: Data kemudian diproses dan dipetakan ke dalam format yang sesuai dengan skema bintang. Hal ini mencakup pengubahan format tanggal dan pengelompokan data berdasarkan kategori produk, pelanggan, dan waktu transaksi.
+   -Load: Setelah transformasi, data dimuat ke dalam database PostgreSQL menggunakan query SQL untuk memastikan konsistensi dan kualitas data.
+3. Pembuatan Visualisasi:
+   Dengan menggunakan Tableau, dilakukan pembuatan visualisasi untuk mempermudah pemahaman data bagi pengguna non-teknis. Visualisasi ini mencakup grafik penjualan berdasarkan waktu, kategori produk, dan metode pembayaran.
+
 ## 4.2 Hasil Implementasi  
+Setelah proses implementasi selesai, sistem data warehouse ini berhasil mengintegrasikan data penjualan fashion dengan struktur yang efisien. Hasil dari implementasi sistem ini adalah sebagai berikut:
+1. Data yang Terstruktur: Semua data transaksi penjualan terorganisir dengan baik dalam tabel fakta dan dimensi yang sesuai dengan skema bintang. Hal ini memungkinkan analisis lebih lanjut yang mudah dan cepat.
+2. Proses ETL yang Efektif: Tahapan ETL berjalan dengan baik, memastikan bahwa data yang dimuat ke dalam database konsisten dan bebas dari kesalahan. Hasilnya adalah sebuah data warehouse yang valid untuk analisis.
+3. Pembuatan Laporan Penjualan: Dengan data yang telah dimuat ke dalam sistem, laporan penjualan dapat dihasilkan dengan cepat. Misalnya, laporan yang menunjukkan produk yang paling banyak dibeli, serta analisis berdasarkan waktu dan metode pembayaran yang digunakan oleh pelanggan.
+
 ## 4.3 Evaluasi  
 
 # BAB V PENUTUP
 
 ## 5.1 Kesimpulan  
+Proyek ini telah berhasil membangun sebuah sistem data warehouse untuk industri fashion ritel dengan menggunakan pendekatan skema bintang. Melalui penerapan proses ETL yang efektif dan desain basis data yang efisien, data penjualan dari berbagai entitas seperti pelanggan, produk, transaksi, dan metode pembayaran telah terintegrasi dengan baik. Sistem ini memberikan kemudahan dalam melakukan analisis data penjualan yang dapat mendukung pengambilan keputusan bisnis yang lebih tepat dan cepat.
 ## 5.2 Rencana Pengembangan
 Ke depan, sistem data warehouse ini dapat dikembangkan dengan menambahkan fitur-fitur berikut:
 1. Integrasi dengan Data Real-time: Menambahkan kemampuan untuk memproses data secara real-time sehingga laporan dapat diperbarui secara otomatis.
