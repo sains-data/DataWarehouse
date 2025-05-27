@@ -111,6 +111,10 @@ c. **Cek Ketersediaan Data dan Spesifikasi Mapping**
 Logical schema merujuk pada struktur tabel yang dirancang untuk mengorganisir dan mengelola data di dalam Data Warehouse. Maka dari itu yang digunakan sebagai tabel fakta yaitu (Transaksi Penjualan), dan yang bertindak sebagai tabel dimensi yaitu: Dimensi Tanggal, Dimensi Pelanggan, Dimensi Pembayaran, dan Dimensi Item.
 
 ### 3.2.3 Desain Fiskal
+Desain Fiskal diawali dengan tahap menentukan tabel yang akan dibuat berdasarkan desain konseptual. Dalam proyek ini terdiri dari tabel fakta dan tabel dimensi. Terdapat 1 tabel fakta yaitu Fact_Purchase(pembelian) dan 4 tabe dimensi : Dim_Customer, Dim_Product, Dim Date, da Dim_Payment_Method.Setiap kolom dan tabel ditentukan nama kolom dan tipe data berdasarkan jenis informasi yang terkandung di dalamnya  dengan tipe data yang sesuai dengan tujuan agar penyimpanan efisien  serta data yang valid. 
+- Menentukan Primary Key dan Foreign Key setiap
+Dengan tabel yang tersedia ditentukan primary key dan foreign key untuk relasi antar tabel. Primary key ditetapkan untuk memastikan setiap tabel memiliki baris data yang unik dan foreign key penting agar data yang tersedia bisa dianalisis secara terhubung.
+- Menuliskan Skrip Query
 ##### Pembuatan Struktur Tabel
 
 ```sql
