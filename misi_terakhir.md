@@ -2,11 +2,11 @@
 
 ## 1.1 Latar Belakang
 
-Di era digital saat ini, industri ritail khususnya sektor fashion, menghadapi perubahan besar dalam pola operasional dan pengambilan keputusan bisnis. Perubahan ini dipicu oleh semakin tingginya volume dan kompleksitas data yang dihasilkan dari aktivitas transaksi harian, interaksi pelanggan, serta integrasi dengan berbagai kanal digital. Salah satu tantangan utama dalam ekosistem digital ini adalah bagaimana mengelola data penjualan, data pelanggan, data produk, serta metode pembayaran yang tersebar di berbagai sistem dan platform menjadi satu kesatuan informasi yang terstruktur dan dapat dianalisis secara efektif. 
+Di era digital saat ini, industri ritail, khususnya sektor fashion, menghadapi perubahan besar dalam pola operasional dan pengambilan keputusan bisnis. Perubahan ini dipicu oleh semakin tingginya volume dan kompleksitas data yang dihasilkan dari aktivitas transaksi harian, interaksi pelanggan, serta integrasi dengan berbagai kanal digital. Salah satu tantangan utama dalam ekosistem digital ini adalah bagaimana mengelola data penjualan, data pelanggan, data produk, serta metode pembayaran yang tersebar di berbagai sistem dan platform menjadi satu kesatuan informasi yang terstruktur dan dapat dianalisis secara efektif.
 
 Untuk menjawab tantangan tersebut, dibutuhkan sistem manajemen data yang mampu menyimpan, mengolah, dan menyajikan data dalam bentuk yang mendukung kebutuhan analisis dan pengambilan keputusan strategis secara efisien dan akurat. Salah satu solusi yang relevan dan banyak diterapkan dalam konteks ini adalah sistem data warehouse.
 
-Data warehouse adalah sistem penyimpanan data terpusat yang dirancang khusus untuk keperluan analisis dan pelaporan bisnis. Tidak seperti sistem basis data operasional yang bersifat transaksional (OLTP), data warehouse mendukung pemrosesan analitik (OLAP) yang memungkinkan pengguna menggali data historis dan melakukan analisis dalam berbagai dimensi. Salah satu pendekatan populer dalam perancangan struktur data warehouse adalah penggunaan skema bintang (star schema), yaitu model data yang menyusun satu tabel fakta utama dan beberapa tabel dimensi terkait seperti pelanggan, produk, waktu, dan metode pembayaran. Desain ini bersifat denormalisasi, sederhana, dan memungkinkan eksekusi kueri dengan performa tinggi. 
+Data warehouse adalah sistem penyimpanan data terpusat yang dirancang khusus untuk keperluan analisis dan pelaporan bisnis. Tidak seperti sistem basis data operasional yang bersifat transaksional (OLTP), data warehouse mendukung pemrosesan analitik (OLAP) yang memungkinkan pengguna menggali data historis dan melakukan analisis dalam berbagai dimensi. Salah satu pendekatan populer dalam perancangan struktur data warehouse adalah penggunaan skema bintang (star schema), yaitu model data yang menyusun satu tabel fakta utama dan beberapa tabel dimensi terkait seperti pelanggan, produk, waktu, dan metode pembayaran. Desain ini bersifat denormalisasi, sederhana, dan memungkinkan eksekusi kueri dengan performa tinggi.
 
 Keunggulan skema bintang terletak pada kemampuannya dalam menyederhanakan struktur data sehingga mempermudah pengguna non-teknis dalam melakukan eksplorasi data untuk analisis bisnis. Dengan demikian, pendekatan ini sangat cocok diterapkan dalam sistem analitik penjualan ritel, di mana kebutuhan akan laporan cepat dan fleksibel menjadi prioritas utama.
 
@@ -14,12 +14,12 @@ Dalam proyek ini, digunakan data penjualan dari sektor fashion ritel yang bersum
 
 ## 1.2 Tujuan
 
-Berdasarkan latar belakang tersebut, dapat dirumuskan beberapa tujuan yang menjadi fokus utama dalam proyek ini, yaitu: 
+Berdasarkan latar belakang tersebut, dapat dirumuskan beberapa tujuan yang menjadi fokus utama dalam proyek ini, yaitu:
 
 1. Membangun data warehouse yang mengintegrasikan data penjualan fashion dari berbagai entitas, seperti pelanggan, produk, transaksi, dan metode pembayaran terstruktur.
 2. Merancang skema bintang untuk mendukung analisis multimedia secara lebih efisien dalam mempermudah eksplorasi data dan penyusunan laporan penjualan.
-3. Mengimplementasikan proses ETL yang efektif guna memastikan kualitas, konsistensi dan kelengkapan data sebelum dimuat ke dalam data warehouse.
-4. Memanfaatkan data warehouse untuk menghasilkan informasi analitis dalam proses pengambilan keputusan, segmentasi pelanggan, dan efektivitas metode pembayaran. 
+3. Mengimplementasikan proses ETL yang efektif guna memastikan kualitas, konsistensi, dan kelengkapan data sebelum dimuat ke dalam data warehouse.
+4. Memanfaatkan data warehouse untuk menghasilkan informasi analitis dalam proses pengambilan keputusan, segmentasi pelanggan, dan efektivitas metode pembayaran.
 
 ## Ruang Lingkup
 
@@ -29,17 +29,17 @@ Proyek yang dilakukan mencakup pengolahan data statis dari platform Kaggle, deng
 
 Metodologi yang digunakan pada proyek ini adalah metode Waterfall, yang terdiri dari beberapa tahapan:
 
-1. **Misi 1: Analisis Kebutuhan**  
-   Misi ini berfokus pada profil bisnis dan masalah bisnis, identifikasi stakeholder dan tujuan bisnis, analisis permasalahan industri fashion, serta mengidentifikasi sumber data yang akan digunakan.
-   
-2. **Misi 2: Desain Sistem**  
-   Desain sistem berfokus pada perancangan sistem skema konseptual multidimensional dengan menggunakan skema bintang, dengan melakukan penentuan tabel fakta dan tabel dimensi. Tabel dimensi terdiri dari tabel produk, pelanggan, waktu, dan metode pembayaran dalam melakukan transaksi. Sedangkan tabel fakta adalah transaksi penjualan dari produk retail.
-   
-3. **Misi 3: Implementasi dan ETL**  
-   Misi ini menjadi inti dari realisasi sistem dengan menggunakan semua desain dari misi sebelumnya untuk diimplementasikan dalam sistem basis data yang siap untuk digunakan. Proses ETL sangat penting digunakan supaya data bersih dan valid sesuai dengan kebutuhan untuk melakukan skema bintang. Proses ELT (Extract, Load, Transform) dilakukan untuk mengambil data mentah, transformasi, pemetaan, serta pemuatan data ke dalam database PostgreSQL menggunakan skema bintang yang terisi dan siap dianalisis. Pada tahap ini akan berfokus pada pembuatan struktur database.
+### 1. Misi 1: Analisis Kebutuhan
+Misi ini berfokus pada profil bisnis dan masalah bisnis, identifikasi stakeholder dan tujuan bisnis, analisis permasalahan industri fashion, serta mengidentifikasi sumber data yang akan digunakan.
 
-4. **Misi 4: Pengujian dan Visualisasi**  
-   Menyusun dan menjalankan query di SQL Server, menjalankan query analitik, menulis dokumentasi, serta menyusun laporan akhir dan README GitHub.
+### 2. Misi 2: Desain Sistem
+Desain sistem berfokus pada perancangan sistem skema konseptual multidimensional dengan menggunakan skema bintang, dengan melakukan penentuan tabel fakta dan tabel dimensi. Tabel dimensi terdiri dari tabel produk, pelanggan, waktu, dan metode pembayaran dalam melakukan transaksi. Sedangkan tabel fakta adalah transaksi penjualan dari produk retail.
+
+### 3. Misi 3: Implementasi dan ETL
+Misi ini menjadi inti dari realisasi sistem dengan menggunakan semua desain dari misi sebelumnya untuk diimplementasikan dalam sistem basis data yang siap untuk digunakan. Proses ETL sangat penting digunakan supaya data bersih dan valid sesuai dengan kebutuhan untuk melakukan skema bintang. Proses ELT (Extract, Load, Transform) dilakukan untuk mengambil data mentah, transformasi, pemetaan, serta pemuatan data ke dalam database PostgreSQL menggunakan skema bintang yang terisi dan siap dianalisis. Pada tahap ini akan berfokus pada pembuatan struktur database.
+
+### 4. Misi 4: Pengujian dan Visualisasi
+Menyusun dan menjalankan query di SQL Server, menjalankan query analitik, menulis dokumentasi, serta menyusun laporan akhir dan README GitHub.
 
 ## 2.1 Tools yang Digunakan
 
@@ -57,12 +57,13 @@ Penjualan online tidak dapat dijangkau dengan mudah oleh pembeli, sehingga merek
 
 ### 3.1.2 Tujuan Bisnis
 
-Bertujuan dalam proses pengambilan keputusan secara strategis oleh perusahaan retail fashion dengan penyediaan informasi cepat, tepat, dan relevan.  
-a. Menganalisis perilaku pelanggan untuk mengetahui tren dan preferensi pasar.  
-b. Mengidentifikasi item atau produk yang paling banyak dibeli.  
-c. Mengetahui metode pembayaran yang paling sering digunakan pelanggan.  
-d. Memonitor pendapatan berdasarkan rentang waktu tertentu (harian, mingguan, bulanan, dan tahunan).  
-e. Mendukung evaluasi efektivitas strategi penjualan berdasarkan waktu, produk, dan karakteristik pelanggan.
+Bertujuan dalam proses pengambilan keputusan secara strategis oleh perusahaan retail fashion dengan penyediaan informasi cepat, tepat, dan relevan.
+
+- a. Menganalisis perilaku pelanggan untuk mengetahui tren dan preferensi pasar.
+- b. Mengidentifikasi item atau produk yang paling banyak dibeli.
+- c. Mengetahui metode pembayaran yang paling sering digunakan pelanggan.
+- d. Memonitor pendapatan berdasarkan rentang waktu tertentu (harian, mingguan, bulanan, dan tahunan).
+- e. Mendukung evaluasi efektivitas strategi penjualan berdasarkan waktu, produk, dan karakteristik pelanggan.
 
 ### 3.1.3 Solusi yang Diusulkan
 
@@ -73,23 +74,28 @@ Memanfaatkan Aplikasi E-commerce agar memudahkan dalam melakukan pencarian produ
 ### 3.2.1 Skema Desain Konseptual
 
 A. **Tujuan Bisnis**  
-   Dalam membangun gudang data, tujuan dari gudang data ini adalah untuk membantu perusahaan retail fashion:  
-   1. Menganalisis perilaku pembelian pelanggan  
-   2. Melihat item yang paling banyak dibeli  
-   3. Mengukur performa produk berdasarkan rating review  
-   4. Mengetahui metode pembayaran yang paling sering digunakan  
-   5. Memonitor pendapatan harian, mingguan, bulanan, dll.
+Dalam membangun gudang data, tujuan dari gudang data ini adalah untuk membantu perusahaan retail fashion:
 
-B. **Desain Konseptual Awal**  
-   ![Diagram Gudang Data](https://github.com/sains-data/DataWarehouse/blob/main/fix.drawio.png)
-   a. **Fakta**  
-   - Pembelian (Purchase Fact)  
-   b. **Dimensi**  
-   - Customer (berbasis Reference ID)  
-   - Produk / Item  
-   - Tanggal  
-   - Metode Pembayaran  
-   c. **Cek Ketersediaan Data dan Spesifikasi Mapping**  
+1. Menganalisis perilaku pembelian pelanggan
+2. Melihat item yang paling banyak dibeli
+3. Mengukur performa produk berdasarkan rating review
+4. Mengetahui metode pembayaran yang paling sering digunakan
+5. Memonitor pendapatan harian, mingguan, bulanan, dll.
+
+B. **Desain Konseptual Awal**
+
+![Diagram Gudang Data](https://github.com/sains-data/DataWarehouse/blob/main/fix.drawio.png)
+
+a. **Fakta**  
+- Pembelian (Purchase Fact)
+
+b. **Dimensi**  
+- Customer (berbasis Reference ID)
+- Produk / Item
+- Tanggal
+- Metode Pembayaran
+
+c. **Cek Ketersediaan Data dan Spesifikasi Mapping**
 
 | Field Asli                | Type Data | Mapping            | Tabel Dimensi/Fakta |
 |---------------------------|-----------|--------------------|---------------------|
